@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a class="front-post" href="/<%=Blog.last.section.name%>/<%=Blog.last.id%>">
+        <img style="max-width:100%;opacity:0.8" src="/assets/post/<%=Blog.last.image%>">
+        <h2 class="text-dark bottom-right bg-white"><%=Blog.last.name%></h3>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container">
+  <div class="row">
+    <%if @fb.size > 1%>
+    <% @fb.each do |i|%>
+      <div class="col-sm-6">
+        <h4><a class="text-dark" href="/<%= i.section.name%>/<%= i.id %>"><%= i.name %></a></h4>
+        <%= simple_format(i.body.first(50)+'...') %>
+        <a class="text-dark" href="/<%= i.section.name%>/<%= i.id %>">
+          <span class="float-right">Ver más <img style="width:15px;margin-bottom:10px;" src="/assets/post/plus.svg" /></span>
+        </a>
+        <div style="width:100%" class="dropdown-divider"></div>
+      </div>
+    <% end%>
+    <%end%>
+
+
+  </div>
+</div>

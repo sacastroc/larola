@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+  <h2><%= @section.title_name %></h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+          <img src="/assets/<%= @section.name %>.png" style="width:100%;">
+      </div>
+
+      <div class="col-sm-6">
+        <%= @section.description %>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="padding-top:1em;">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 style="padding-bottom:0.7em;">Últimos blogs</h2>
+        <div class="dropdown-divider"></div>
+        <% if @section == nil %>
+        <% else %>
+          <% Blog.last(5).each do |i|%>
+            <% if i.section.name == @section.name %>
+            <h4><a class="text-dark" href="/<%= @section.name%>/<%= i.id %>"><%= i.name %></a></h4>
+            <%= simple_format(i.body.first(150)+'...') %>
+            <a class="text-dark" href="/<%= @section.name%>/<%= i.id %>">
+              <span class="float-right">Ver más <img style="width:15px;margin-bottom:10px;" src="/assets/post/plus.svg" /></span>
+            </a>
+            <div style="width:100%" class="dropdown-divider"></div>
+            <% end %>
+          <% end%>
+        <% end %>
+      </div>
+    </div>
+  </div>

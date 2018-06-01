@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h2><%= @blog.name %></h2>
+
+<img class="center-block" src="/assets/post/<%= @blog.image%>" style="max-width:100%">
+
+<p>
+  <%= simple_format(@blog.body) %>
+</p>

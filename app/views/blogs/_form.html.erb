@@ -1,0 +1,31 @@
+<%= simple_form_for(@blog, url: blog_new_path) do |form| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :blog_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :section_id %>
+    <%= form.text_field :section_id, id: :blog_section_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

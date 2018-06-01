@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Larola</title>
+    <link rel="icon" href="/assets/logop.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+
+  <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.0&appId=779121332240566';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222222;">
+      <a class="navbar-brand" href="/">La Rola</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if request.env['PATH_INFO'] == "/" %><li class="nav-item active"><% else %> <li class="nav-item"> <% end %>
+            <a class="nav-link" href="/">Inicio
+              <% if request.env['PATH_INFO'] == "/" %>
+              <span class="sr-only">(current)</span>
+              <% end %>
+            </a>
+          </li>
+          <% if request.env['PATH_INFO'].include? "/notirola" %><li class="nav-item active"><% else %> <li class="nav-item"> <% end %>
+            <a class="nav-link" href="/notirola">Notirola</a>
+
+          </li>
+          <% if request.env['PATH_INFO'].include? "/derolaporlaciudad" %><li class="nav-item active"><% else %> <li class="nav-item"> <% end %>
+            <a class="nav-link" href="/derolaporlaciudad">De Rola por la Ciudad</a>
+          </li>
+          <% if request.env['PATH_INFO'].include? "/enrolate" %><li class="nav-item active"><% else %> <li class="nav-item"> <% end %>
+            <a class="nav-link" href="/enrolate">Enrolate</a>
+          </li>
+          <% if request.env['PATH_INFO'].include? "/roleando" %><li class="nav-item active"><% else %> <li class="nav-item"> <% end %>
+            <a class="nav-link" href="/roleando">Roleando</a>
+          </li>
+          <% if request.env['PATH_INFO'].include? "/about" %><li class="nav-item active"><% else %> <li class="nav-item"> <% end %>
+            <a class="nav-link" href="/about">Acerca de</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="search_input" class="form-control mr-sm-2" type="search" placeholder="Busca aquí" aria-label="Buscar">
+          <%=link_to 'Buscar', '/search?q=may', class: 'text-white'%>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <%= yield %>
+        </div>
+
+        <div class="col-sm-3">
+          <h3>Nuestras redes</h3>
+          <div class="dropdown-divider"></div>
+          <h5>YouTube</h5>
+          <div class="g-ytsubscribe" data-channelid="UC_L1NXYT70-sedB2YhJRBmQ" data-layout="full" data-count="default"></div>
+          <div class="dropdown-divider"></div>
+          <h5>Facebook</h5>
+          <script src="https://apis.google.com/js/platform.js"></script>
+          <div class="fb-page" data-href="https://www.facebook.com/larolabta" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/larolabta" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/larolabta">La Rola Bogotá</a></blockquote></div>
+          <div class="dropdown-divider"></div>
+          <h5>Twitter</h5>
+          <a class="twitter-timeline" href="https://twitter.com/Larolabta?ref_src=twsrc%5Etfw">Tweets by Larolabta</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small text-white pt-4 mt-4" style="background-color: #222222;">
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+          <div class="col-md-6 mt-md-0 mt-3">
+            <!-- Content -->
+            <h5 class="text-uppercase">La rola bogota</h5>
+            <p>Escribanos al siguiente correo y estaremos con usted lo mas pronto posible:</p>
+            <p><a href="mailto:editor@larola.co">editor@larola.co</a></p>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <div class="col-md-6 mb-md-0 mb-3">
+            <h5 class="text-uppercase">Redes</h5>
+              <div class="col-md-12" style="padding-top:5px;">
+                <a href="https://www.facebook.com/larolabta/" target="_blank" class="text-white"><i class="fa fa-facebook fa-sm white-text mr-sm-5 mr-3 fa-2x"></i></a>
+                <a href="https://twitter.com/Larolabta" target="_blank" class="text-white"><i class="fa fa-twitter fa-sm white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a href="https://www.instagram.com/larolabta/" target="_blank" class="text-white"><i class="fa fa-instagram fa-sm white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a href="https://www.youtube.com/channel/UC_L1NXYT70-sedB2YhJRBmQ" target="_blank" class="text-white"><i class="fa fa-youtube fa-sm white-text mr-sm-5 mr-3 fa-2x"></i></a>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="/"> La Rola Bogota</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

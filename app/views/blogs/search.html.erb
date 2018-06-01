@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <%@blogs.each do |b|%>
+        <h3><a class="text-dark" href="/<%= b.section.name%>/<%= b.id %>"><%= b.name %></a></h3>
+        <%= simple_format(b.body.first(100)+'...') %>
+        <div class="dropdown-divider"></div>
+      <%end%>
+    </div>
+  </div>
+</div>
