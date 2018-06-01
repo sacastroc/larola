@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h2><%= @blog.name %></h2>
 
-<img class="center-block" src="/assets/post/<%= @blog.image%>" style="max-width:100%">
+
+<%= image_tag(@blog.image, class: 'center-block images-blog') %>
 
 <p>
   <%= simple_format(@blog.body) %>
